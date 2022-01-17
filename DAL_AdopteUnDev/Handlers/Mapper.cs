@@ -59,5 +59,15 @@ namespace DAL_AdopteUnDev.Handlers
                 ITLabel = (string)record[nameof(ITLang.ITLabel)]
             };
         }
+
+        public static LangCateg ToLangCateg(IDataRecord record)
+        {
+            if (record is null) return null;
+            return new LangCateg
+            {
+                idIT = (int)record[nameof(LangCateg.idIT)],
+                idCategory = (int)record[nameof(LangCateg.idCategory)]
+            };
+        }
     }
 }

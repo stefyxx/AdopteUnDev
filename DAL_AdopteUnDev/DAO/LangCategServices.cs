@@ -1,13 +1,16 @@
 ﻿using AdopteUnDev_Common.IRepositories;
 using DAL_AdopteUnDev.DTO;
+using DAL_AdopteUnDev.Handlers;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Text;
 
 namespace DAL_AdopteUnDev.DAO
 {
     public class LangCategServices : UseBaseConnection, IGetRepository<LangCateg>
     {
+        //N.B. non ha una colonna Id, ha una key primary associata: idLang+idCateg
         public LangCateg Get(int id)
         {
             throw new NotImplementedException();
@@ -15,8 +18,42 @@ namespace DAL_AdopteUnDev.DAO
 
         public IEnumerable<LangCateg> Get()
         {
-            throw new NotImplementedException();
+            using (SqlConnection c = new SqlConnection(_connString))
+            {
+                using (SqlCommand cmd = c.CreateCommand())
+                {
+                    cmd.CommandText = "SELECT [idIT],[idCategory] FROM [Categories]";
+
+                    c.Open();
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read()) yield return Mapper.ToLangCateg(reader);
+                }
+            }
         }
+
+        //ottenere label del linguaggio con le categorie associate:
+        public IEnumerable<LangCateg> GetListLabels()
+        {
+            using (SqlConnection c = new SqlConnection(_connString))
+            {
+                using (SqlCommand cmd = c.CreateCommand())
+                {
+                    cmd.CommandText = "SELECT [Categories].[CategLabel], [ITLang].[ITLabel], [Categories].[idCategory], [ITLang].[idIT] FROM[Categories] INNER JOIN " +
+                        "[LangCateg] ON[Categories].[idCategory] = [LangCateg].[idCategory] INNER JOIN " +
+                        "[ITLang] ON[LangCateg].[idIT] = [ITLang].[idIT]";
+
+                    c.Open();
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read()) yield return Mapper.ToLangCateg(reader); // mancano 2 obj: Linguaggio e CATEGORIA
+
+                }
+            }
+        }
+
+
+
 
         //ottenere label del linguaggio con le categorie associate:
         /*SELECT [Categories].[CategLabel], [ITLang].[ITLabel], [Categories].[idCategory], [ITLang].[idIT]

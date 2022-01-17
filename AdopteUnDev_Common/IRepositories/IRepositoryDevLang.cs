@@ -4,8 +4,8 @@ using System.Text;
 
 namespace AdopteUnDev_Common.IRepositories
 {
-    public interface ILangRepository<TEntity>
+    public interface IRepositoryDevLang<TEntity, Tint>
     {
-        IEnumerable<int> Get(TEntity entity);
+
     }
 }

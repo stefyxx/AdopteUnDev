@@ -13,5 +13,9 @@ namespace DAL_AdopteUnDev.DTO
         //e viceversa (se seleziono C#, devo vedere solo le categorie associate)
         public int idIT { get; set; }
         public int idCategory { get; set; }
+
+        //non presenti in DB !!!!!
+        public Categories Category { get; set; }
+        public ITLang Language { get; set; }
     }
 }
