@@ -18,7 +18,8 @@ namespace DAL_AdopteUnDev.Handlers
                 CliFirstName=(string)record[nameof(Client.CliFirstName)],
                 CliMail=(string)record[nameof(Client.CliMail)],
                 CliCompany=(string)record[nameof(Client.CliCompany)],
-                CliLogin =(string)record[nameof(Client.CliLogin)]
+                CliLogin = (record[nameof(Client.CliLogin)]==DBNull.Value)?null:(string)record[nameof(Client.CliLogin)]
+                //CliLogin =(string)record[nameof(Client.CliLogin)]
 
             };
         }
@@ -32,12 +33,14 @@ namespace DAL_AdopteUnDev.Handlers
                 DevName = (string)record[nameof(Developer.DevName)],
                 DevFirstName = (string)record[nameof(Developer.DevFirstName)],
                 DevBirthDate = (DateTime)record[nameof(Developer.DevBirthDate)],
-                DevPicture = (string)record[nameof(Developer.DevPicture)],
+                //DevPicture = (string)record[nameof(Developer.DevPicture)],
+                DevPicture =(record[nameof(Developer.DevPicture)]==DBNull.Value)?null: (string)record[nameof(Developer.DevPicture)],
                 DevHourCost = (double)record[nameof(Developer.DevHourCost)],
                 DevDayCost = (double)record[nameof(Developer.DevDayCost)],
                 DevMonthCost = (double)record[nameof(Developer.DevMonthCost)],
                 DevMail = (string)record[nameof(Developer.DevMail)],
-                DevCategPrincipal = (string)record[nameof(Developer.DevCategPrincipal)]
+                //DevCategPrincipal = (string)record[nameof(Developer.DevCategPrincipal)]
+                DevCategPrincipal =(record[nameof(Developer.DevCategPrincipal)]==DBNull.Value)?null: (string)record[nameof(Developer.DevCategPrincipal)]
             };
         }
         public static Categories ToCategories(IDataRecord record)
@@ -67,6 +70,29 @@ namespace DAL_AdopteUnDev.Handlers
             {
                 idIT = (int)record[nameof(LangCateg.idIT)],
                 idCategory = (int)record[nameof(LangCateg.idCategory)]
+            };
+        }
+        public static ClientEndorseDev ToClientEndorseDev(IDataRecord record)
+        {
+            if (record is null) return null;
+            return new ClientEndorseDev
+            {
+                EndorseNumber = (string)record[nameof(ClientEndorseDev.EndorseNumber)],
+                idClient = (int)record[nameof(ClientEndorseDev.idClient)],
+                idDev =(int)record[nameof(ClientEndorseDev.idDev)],
+                BeginDate=(DateTime)record[nameof(ClientEndorseDev.BeginDate)],
+                EndDate = (DateTime)record[nameof(ClientEndorseDev.EndDate)]
+            };
+        }
+        public static DevLang ToDevLang(IDataRecord record)
+        {
+            if (record is null) return null;
+            return new DevLang
+            {
+                idDev = (int)record[nameof(DevLang.idDev)],
+                idIT = (int)record[nameof(DevLang.idIT)],
+                //NB DateTime? !!!!!
+                Since = record[nameof(DevLang.Since)] != DBNull.Value ? (DateTime?)record[nameof(DevLang.Since)] : null
             };
         }
     }

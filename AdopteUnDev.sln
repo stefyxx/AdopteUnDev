@@ -15,7 +15,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BLL", "BLL", "{9432CDE4-8F9
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdopteUnDev_Common", "AdopteUnDev_Common\AdopteUnDev_Common.csproj", "{676A4D1A-050E-45F7-9AA6-F05276F81D5E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVC_AdopterUnDev", "MVC_AdopterUnDev\MVC_AdopterUnDev.csproj", "{BD40AF59-703E-4124-84B5-16E63B767872}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MVC_AdopterUnDev", "MVC_AdopterUnDev\MVC_AdopterUnDev.csproj", "{BD40AF59-703E-4124-84B5-16E63B767872}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "DBAdopteUnDev", "DBAdopteUnDev\DBAdopteUnDev.sqlproj", "{A89F6D6D-7FAF-4997-BD51-287AEA568E6A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,12 @@ Global
 		{BD40AF59-703E-4124-84B5-16E63B767872}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BD40AF59-703E-4124-84B5-16E63B767872}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BD40AF59-703E-4124-84B5-16E63B767872}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A89F6D6D-7FAF-4997-BD51-287AEA568E6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A89F6D6D-7FAF-4997-BD51-287AEA568E6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A89F6D6D-7FAF-4997-BD51-287AEA568E6A}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{A89F6D6D-7FAF-4997-BD51-287AEA568E6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A89F6D6D-7FAF-4997-BD51-287AEA568E6A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A89F6D6D-7FAF-4997-BD51-287AEA568E6A}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

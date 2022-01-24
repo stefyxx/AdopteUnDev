@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
 namespace DAL_AdopteUnDev.DTO
 {
     public class ClientEndorseDev
