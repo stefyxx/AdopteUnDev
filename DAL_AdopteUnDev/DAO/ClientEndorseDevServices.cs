@@ -57,7 +57,7 @@ namespace DAL_AdopteUnDev.DAO
                     c.Open();
 
                     SqlDataReader reader = cmd.ExecuteReader();
-                    if (reader.Read()) yield return Mapper.ToClientEndorseDev(reader);
+                    while (reader.Read()) yield return Mapper.ToClientEndorseDev(reader);
                 }
             }
         }

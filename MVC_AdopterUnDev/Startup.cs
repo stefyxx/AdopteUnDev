@@ -1,3 +1,4 @@
+using AdopteUnDev_Common.IRepositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -23,6 +24,11 @@ namespace MVC_AdopterUnDev
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddHttpContextAccessor();
+
+            services.AddScoped<IDeveloperRepository<DAL_AdopteUnDev.DTO.Developer>, DAL_AdopteUnDev.DAO.DeveloperServices>();
+            services.AddScoped<IDeveloperRepository<BLL_AdopteUnDev.Models.Developer>, BLL_AdopteUnDev.Repository.DeveloperService>();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

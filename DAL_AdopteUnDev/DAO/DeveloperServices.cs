@@ -8,7 +8,7 @@ using System.Text;
 
 namespace DAL_AdopteUnDev.DAO
 {
-    public class DeveloperServices : UseBaseConnection, IRepository<Developer>, IGetRepository<Developer>
+    public class DeveloperServices : UseBaseConnection, IDeveloperRepository<Developer>
     {
         public void Delete(int id)
         {
@@ -33,7 +33,7 @@ namespace DAL_AdopteUnDev.DAO
             {
                 using (SqlCommand cmd = c.CreateCommand())
                 {
-                    cmd.CommandText = "SELECT [idDev],[DevName],[DevFirstName],[DevBirthDate],[DevPicture],[DevHourCost],[DevDayCost] [DevMonthCost] [DevMail] [DevCategPrincipal] FROM [Developer] WHERE [idDev] = @id";
+                    cmd.CommandText = "SELECT [idDev],[DevName],[DevFirstName],[DevBirthDate],[DevPicture],[DevHourCost],[DevDayCost], [DevMonthCost], [DevMail], [DevCategPrincipal] FROM [Developer] WHERE [idDev] = @id";
                     SqlParameter p_id = new SqlParameter("id", id);
                     cmd.Parameters.Add(p_id);
 
@@ -52,7 +52,7 @@ namespace DAL_AdopteUnDev.DAO
             {
                 using (SqlCommand cmd = c.CreateCommand())
                 {
-                    cmd.CommandText = "SELECT [idDev],[DevName],[DevFirstName],[DevBirthDate],[DevPicture],[DevHourCost],[DevDayCost] [DevMonthCost] [DevMail] [DevCategPrincipal] FROM [Developer]";
+                    cmd.CommandText = "SELECT [idDev],[DevName],[DevFirstName],[DevBirthDate],[DevPicture],[DevHourCost],[DevDayCost],[DevMonthCost], [DevMail], [DevCategPrincipal] FROM [Developer]";
 
                     c.Open();
 

@@ -95,5 +95,19 @@ namespace DAL_AdopteUnDev.Handlers
                 Since = record[nameof(DevLang.Since)] != DBNull.Value ? (DateTime?)record[nameof(DevLang.Since)] : null
             };
         }
+        public static Review ToReview(IDataRecord record)
+        {
+            if (record is null) return null;
+            return new Review
+            {
+                idReview = (int)record[nameof(Review.idReview)],
+                ReviewName = (string)record[nameof(Review.ReviewName)],
+                ReviewText = (string)record[nameof(Review.ReviewText)],
+                ReviewMail = (string)record[nameof(Review.ReviewMail)],
+                ReviewDate = (DateTime)record[nameof(Review.ReviewDate)],
+                idDev = (int)record[nameof(Review.idDev)]
+            };
+
+        }
     }
 }

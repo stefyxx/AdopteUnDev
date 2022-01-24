@@ -11,7 +11,7 @@ namespace DAL_AdopteUnDev.DTO
         public string ReviewText { get; set; }
         public string ReviewMail { get; set; }
 
-        //data per default del giorno
+        //data per default del giorno data nella DB
         public DateTime ReviewDate { 
             get;
 
