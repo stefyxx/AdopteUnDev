@@ -13,8 +13,8 @@ namespace MVC_AdopterUnDev.Controllers
 {
     public class DeveloperController : Controller
     {
-        private readonly IDeveloperRepository<BLL_AdopteUnDev.Models.Developer> _service;
-        public DeveloperController(IDeveloperRepository<BLL_AdopteUnDev.Models.Developer> service)
+        private readonly IDeveloperRepository<BLL_AdopteUnDev01.Models.Developer> _service;
+        public DeveloperController(IDeveloperRepository<BLL_AdopteUnDev01.Models.Developer> service)
         {
             this._service = service;
         }

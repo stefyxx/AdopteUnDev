@@ -27,7 +27,7 @@ namespace MVC_AdopterUnDev
             services.AddHttpContextAccessor();
 
             services.AddScoped<IDeveloperRepository<DAL_AdopteUnDev.DTO.Developer>, DAL_AdopteUnDev.DAO.DeveloperServices>();
-            services.AddScoped<IDeveloperRepository<BLL_AdopteUnDev.Models.Developer>, BLL_AdopteUnDev.Repository.DeveloperService>();
+            services.AddScoped<IDeveloperRepository<BLL_AdopteUnDev01.Models.Developer>, BLL_AdopteUnDev01.Repository.DeveloperService>();
             
         }
 

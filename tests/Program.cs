@@ -2,12 +2,13 @@
 using System;
 using System.Text.Json;
 
-namespace BLL_AdopteUnDev
+namespace tests
 {
     class Program
     {
         static void Main(string[] args)
         {
+            Client user = new Client();
             Developer dev = new Developer
             {
                 idDev = 4,
@@ -21,7 +22,9 @@ namespace BLL_AdopteUnDev
                 DevMail = "dame.Eboshi@ghibli.jp",
                 DevCategPrincipal = "4",
             };
+
             Console.WriteLine(JsonSerializer.Serialize(dev));
+          
         }
     }
 }
