@@ -40,5 +40,7 @@ namespace MVC_AdopterUnDev.Models
         [DisplayName("Categoria : ")]
         //linguaggio principe
         public string? DevCategPrincipal { get; set; }
+
+        public string ITLabel { get; set; }
     }
 }

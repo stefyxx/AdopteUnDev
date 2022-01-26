@@ -10,6 +10,7 @@ namespace DAL_AdopteUnDev.DAO
 {
     public class LangCategServices : UseBaseConnection, IRepositoryTab_Intermediarie<LangCateg, int, int>
     {
+        //ha 2 primary Keys:
         public LangCateg Get(int idIT, int idCategory)
         {
             using(SqlConnection c= new SqlConnection(_connString))

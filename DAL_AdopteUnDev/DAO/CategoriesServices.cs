@@ -8,7 +8,7 @@ using System.Text;
 
 namespace DAL_AdopteUnDev.DAO
 {
-    public class CategoriesServices : UseBaseConnection, IRepository<Categories>, IGetRepository<Categories>
+    public class CategoriesServices : UseBaseConnection, IDeveloperRepository<Categories>
     {
         //In DB ho già: WEB; ANALYSE; WEBAPP; GEEK; WPF; Incrédules
         //ma questo non vuol dire che io potrei sempre volet Modificare, Aggiungere .. delle categorie

@@ -14,9 +14,11 @@ namespace MVC_AdopterUnDev.Controllers
     public class DeveloperController : Controller
     {
         private readonly IDeveloperRepository<BLL_AdopteUnDev01.Models.Developer> _service;
-        public DeveloperController(IDeveloperRepository<BLL_AdopteUnDev01.Models.Developer> service)
+        private readonly IDeveloperRepository<ITLang> _serviceLang;
+        public DeveloperController(IDeveloperRepository<BLL_AdopteUnDev01.Models.Developer> service, IDeveloperRepository<ITLang> serviceLang)
         {
             this._service = service;
+            this._serviceLang = serviceLang;
         }
 
         public ActionResult Index()
@@ -28,6 +30,8 @@ namespace MVC_AdopterUnDev.Controllers
         public ActionResult Details(int id)
         {
             DeveloperDetails model = _service.Get(id).ToDetailsDev();
+            ITLang lang = _serviceLang.Get(Int32.Parse(model.DevCategPrincipal));
+            model.ITLabel = lang.ITLabel;
             return View(model);
         }
 
