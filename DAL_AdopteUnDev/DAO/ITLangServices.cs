@@ -8,7 +8,7 @@ using System.Text;
 
 namespace DAL_AdopteUnDev.DAO
 {
-    public class ITLangServices : UseBaseConnection, IRepository<ITLang>, IGetRepository<ITLang>
+    public class ITLangServices : UseBaseConnection, IDeveloperRepository<ITLang>
     {
         //In DB ho già: C#; ASP MVC; JAVA; UML;
         //ma questo non vuol dire che io potrei sempre volet Modificare, Aggiungere .. dei linguaggi
