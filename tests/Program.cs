@@ -44,8 +44,10 @@ namespace tests
             {
                 Console.WriteLine(JsonSerializer.Serialize(d));
             }
+            Console.WriteLine();
             BLL_AdopteUnDev01.Models.Developer dev4 = service.Get(4);
             Console.WriteLine(dev4.DevFirstName);
+            Console.WriteLine();
 
 
             int lingua = Int32.Parse(dev4.DevCategPrincipal);
@@ -75,17 +77,58 @@ namespace tests
             Console.WriteLine(lang.idIT+" : id Lang");
             //Console.WriteLine(ITLabel); //non riesce a recuperare il valore con il 'For'
 
+            Console.WriteLine();
             //ora recupero la Category: devo passare per la tab interm!!
             IRepositoryTab_Intermediarie<LangCateg, int, int> serviceLangCat = new DAL_AdopteUnDev.DAO.LangCategServices();
+            //lista LangCateg: tab intermediaria
             IEnumerable<LangCateg> listLangCat = serviceLangCat.Get();
+            List<int> listaIdCat = new List<int>();
+
+            foreach (LangCateg item in listLangCat)
+            {
+                //if (item.idIT == lang.idIT) Console.WriteLine(item.idCategory);
+                if (item.idIT == lang.idIT)
+                {
+                    listaIdCat.Add(item.idCategory);
+                }
+            }
+
+            Console.WriteLine(JsonSerializer.Serialize(listaIdCat));
 
 
+            //lista tutte le  Categirie:  listaCateg
             IDeveloperRepository<Categories> serviceCateg = new DAL_AdopteUnDev.DAO.CategoriesServices();
             IEnumerable<Categories> listaCateg = serviceCateg.Get();
-            Categories categ = serviceCateg.Get(3);
-         //ERROREE COME RECUPERO LA CATEGORY????
-            LangCateg langCat = serviceLangCat.Get(lang.idIT,categ.idCategory);
+
+            /*Categories categ = serviceCateg.Get(3);
+                // ERROREE COME RECUPERO LA CATEGORY????
+            LangCateg langCat = serviceLangCat.Get(lang.idIT,categ.idCategory);*/
+
+            //lista Categorie x linguaggio:  listaCatXLinguaggio
+            IEnumerable<Categories> listaCatXLinguaggio;
+            //IEnumerable<Categories> listaCatXLinguaggio = new Categories[] { new Categories() };
+
+
+            foreach (Categories item in listaCateg)
+            {
+               
+                foreach (int idC in listaIdCat)
+                {
+                    if (item.idCategory == idC)
+                    {
+                        //listaCatXLinguaggio = new Categories[] { new Categories(item.idCategory, item.CategLabel)};
+
+                        //listaCatXLinguaggio.ToList().Add(new Categories (item.idCategory, item.CategLabel ));
+                        //listaCatXLinguaggio.ToList().Add(listaCateg.Select(c => c.idCategory == idC));
+                        //listaCatXLinguaggio= listaCatXLinguaggio.Append(listaCateg.Select(c => c.idCategory == idC))
+                        //.Intersect(listaCateg.Select(c=>c.idCategory == idC));
+                    }
+
+                }
+
+            }
             
+
 
 
 

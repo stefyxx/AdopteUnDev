@@ -38,7 +38,7 @@ namespace MVC_AdopterUnDev.Handlers
                 DevDayCost = dev.DevDayCost,
                 DevMonthCost = dev.DevMonthCost,
                 DevMail = dev.DevMail,
-                DevCategPrincipal = dev.DevCategPrincipal
+                DevCategPrincipal = dev.DevCategPrincipal,
             };
         }
     }
