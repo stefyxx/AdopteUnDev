@@ -24,7 +24,14 @@ namespace MVC_AdopterUnDev.Controllers
         public ActionResult Index()
         {
             IEnumerable<DeveloperList> model = this._service.Get().Select(d => d.ToListDev());
+            /*IEnumerable<ITLang> languages = _serviceLang.Get(); // fare un for
+            if(languages.Select(l => l.idIT.ToString())== model.Select(s => s.DevCategPrincipal))
+            {
+                model.Select(s => s.linguaggio = _serviceLang.Get(Int32.Parse(s.DevCategPrincipal));
+            }*/
+            
             return View(model);
+
         }
 
         public ActionResult Details(int id)
@@ -80,23 +87,62 @@ namespace MVC_AdopterUnDev.Controllers
             catch(Exception e)
             {
                 ViewBag.Error = e.Message;
+                //riempio di nuovo il select:
+                IEnumerable<ITLang> languages = _serviceLang.Get();
+                collection.langues = languages;
                 return View(collection);
+                //return RedirectToAction(nameof(Index));
             }
         }
 
         // GET: DeveloperController/Edit/5
+        [HttpGet]
         public ActionResult Edit(int id)
         {
-            return View();
+            DeveloperCreate dev = this._service.Get(id).ToCreateDev();
+            if (dev.DevCategPrincipal == null) 
+            {
+                dev.ITLabel="";
+            }
+            else {
+                ITLang lang = _serviceLang.Get(Int32.Parse(dev.DevCategPrincipal));
+                dev.ITLabel = lang.ITLabel;
+            }
+
+            IEnumerable<ITLang> languages = _serviceLang.Get();
+            dev.langues = languages;
+            return View(dev);
         }
 
         // POST: DeveloperController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, DeveloperCreate collection)
         {
+            BLL_AdopteUnDev01.Models.Developer result = this._service.Get(id);
+
             try
             {
+                if(result is null) throw new Exception("Nessun developeur con questo identificante");
+                if (!ModelState.IsValid) throw new Exception();
+
+                //ho un developer a questo idDev:
+                result.DevName = collection.DevName;
+                result.DevFirstName = collection.DevFirstName;
+                result.DevBirthDate = collection.DevBirthDate;
+                result.DevPicture = collection.DevPicture;
+                result.DevMail = collection.DevMail;
+                result.DevHourCost = collection.DevHourCost;
+                result.DevDayCost = collection.DevDayCost;
+                result.DevMonthCost = collection.DevMonthCost;
+                if (collection.DevCategPrincipal == null)
+                {
+                    result.DevCategPrincipal = "";
+                }
+                else {
+                    result.DevCategPrincipal = collection.DevCategPrincipal;
+                }
+                this._service.Update(id, result);
                 return RedirectToAction(nameof(Index));
             }
             catch

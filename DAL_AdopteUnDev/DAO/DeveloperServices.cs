@@ -69,7 +69,7 @@ namespace DAL_AdopteUnDev.DAO
                 using (SqlCommand cmd = c.CreateCommand())
                 {
 
-                    cmd.CommandText = "INSERT INTO [Developer] ([idDev],[DevName], [DevFirstName], [DevBirthDate], [DevPicture], [DevHourCost], [DevDayCost], [DevMonthCost], [DevMail], [DevCategPrincipal]) OUTPUT [inserted].[idDev] VALUES (( SELECT MAX(idDev) FROM [Developer]) + 1,@nom, @prenom, @data, @f, @costoOra, @costoGiorno, @costoMese, @email, @categoriaPrinc)";
+                    cmd.CommandText = "INSERT INTO [Developer] ([idDev],[DevName], [DevFirstName], [DevBirthDate], [DevPicture], [DevHourCost], [DevDayCost], [DevMonthCost], [DevMail], [DevCategPrincipal]) OUTPUT [inserted].[idDev] VALUES (( SELECT MAX(idDev) FROM [Developer])+1, @nom, @prenom, @data, @f, @costoOra, @costoGiorno, @costoMese, @email, @categoriaPrinc)";
                     SqlParameter p_nom = new SqlParameter("nom", entity.DevName);
                     SqlParameter p_pr = new SqlParameter("prenom", entity.DevFirstName);
                     SqlParameter p_nascita = new SqlParameter("data", entity.DevBirthDate);
@@ -110,21 +110,19 @@ namespace DAL_AdopteUnDev.DAO
             {
                 using (SqlCommand cmd = c.CreateCommand())
                 {
-                    cmd.CommandText = "UPDATE [Developer] SET [DevName]=@nom, [DevFirstName]= @prenom, " +
-                        "[DevBirthDate]=@dataDiNascita, [DevPicture]=@foto, [DevHourCost]=@costoOra, [DevDayCost]=@costoGiorno, [DevMonthCost]=@costoMese, [DevMail]= @email, [DevCategPrincipal]= @categoriaPrinc," +
-                        "WHERE [idDev] = @id";
+                    cmd.CommandText = "UPDATE [Developer] SET [DevName]=@nom, [DevFirstName]= @prenom, [DevBirthDate]=@dataDiNascita, [DevPicture]=@foto, [DevHourCost]=@costoOra, [DevDayCost]=@costoGiorno, [DevMonthCost]=@costoMese, [DevMail]= @email, [DevCategPrincipal]= @categoriaPrinc WHERE [idDev] = @id";
 
                     SqlParameter p_id = new SqlParameter("id", id);
 
                     SqlParameter p_nom = new SqlParameter("nom", entity.DevName);
                     SqlParameter p_pr = new SqlParameter("prenom", entity.DevFirstName);
                     SqlParameter p_nascita = new SqlParameter("dataDiNascita", entity.DevBirthDate);
-                    SqlParameter p_foto = new SqlParameter("foto", entity.DevPicture);
+                    SqlParameter p_foto = new SqlParameter("foto", (Object)entity.DevPicture ?? DBNull.Value);
                     SqlParameter p_costoOra = new SqlParameter("costoOra", entity.DevHourCost);
                     SqlParameter p_costoGiorno = new SqlParameter("costoGiorno", entity.DevDayCost);
                     SqlParameter p_costoMese = new SqlParameter("costoMese", entity.DevMonthCost);
                     SqlParameter p_email = new SqlParameter("email", entity.DevMail);
-                    SqlParameter p_categoriaPrinc = new SqlParameter("categoriaPrinc", entity.DevCategPrincipal);
+                    SqlParameter p_categoriaPrinc = new SqlParameter("categoriaPrinc", (Object)entity.DevCategPrincipal ?? DBNull.Value);
 
                     cmd.Parameters.Add(p_nom);
                     cmd.Parameters.Add(p_pr);

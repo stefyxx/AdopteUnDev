@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MVC_AdopterUnDev.Models
 {
-    public class DeveloperCreate
+    public class DeveloperEdit
     {
         [Key]
         [ScaffoldColumn(false)]
@@ -52,8 +52,5 @@ namespace MVC_AdopterUnDev.Models
 
         //cosi' ha sia id che label
         public IEnumerable<DAL_AdopteUnDev.DTO.ITLang> langues { get; set; }
-
-        //mi serve per l'Edit
-        public string ITLabel { get; set; }
     }
 }
