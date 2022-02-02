@@ -64,14 +64,14 @@
 
                 <label asp-for="DevCategPrincipal" class="control-label"></label>
                 @Html.DropDownListFor(
-                            m => m.idITlang, Model.langues.Select(o => new SelectListItem { Value = o.idIT.ToString(), Text = o.ITLabel }), "pas de choix"
+                            m => m.DevCategPrincipal, Model.langues.Select(o => new SelectListItem { Value = o.idIT.ToString(), Text = o.ITLabel }), "pas de choix"
                     //m=> m.DevCategPrincipal, Model.langues.Select(o=> new SelectListItem { Value= o.ITLabel }),
                     )
 
                 @*questo per visualizzare la sting 'DevCategPrincipal' che in realtà é il ToString() di 'idITlang' *@
                 @*<label asp-for="DevCategPrincipal" class="control-label"></label>
-        <input asp-for="DevCategPrincipal" class="form-control" />
-        <span asp-validation-for="DevCategPrincipal" class="text-danger"></span>*@
+                    <input asp-for="DevCategPrincipal" class="form-control" />
+                <span asp-validation-for="DevCategPrincipal" class="text-danger"></span>*@
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

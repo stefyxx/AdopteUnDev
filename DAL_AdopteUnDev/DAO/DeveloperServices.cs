@@ -68,14 +68,12 @@ namespace DAL_AdopteUnDev.DAO
             {
                 using (SqlCommand cmd = c.CreateCommand())
                 {
-                    cmd.CommandText = "INSERT INTO [Developer]" +
-                        "([DevName], [DevFirstName], [DevBirthDate], [DevPicture], [DevHourCost], [DevDayCost], [DevMonthCost], [DevMail], [DevCategPrincipal]) " +
-                        "OUTPUT [inserted].[idDev] " +
-                        "VALUES (@nom, @prenom, @dataDiNascita, @foto, @costoOra, @costoGiorno, @costoMese, @email, @categoriaPrinc)";
+
+                    cmd.CommandText = "INSERT INTO [Developer] ([idDev],[DevName], [DevFirstName], [DevBirthDate], [DevPicture], [DevHourCost], [DevDayCost], [DevMonthCost], [DevMail], [DevCategPrincipal]) OUTPUT [inserted].[idDev] VALUES (( SELECT MAX(idDev) FROM [Developer]) + 1,@nom, @prenom, @data, @f, @costoOra, @costoGiorno, @costoMese, @email, @categoriaPrinc)";
                     SqlParameter p_nom = new SqlParameter("nom", entity.DevName);
                     SqlParameter p_pr = new SqlParameter("prenom", entity.DevFirstName);
-                    SqlParameter p_nascita = new SqlParameter("dataDiNascita", entity.DevBirthDate);
-                    SqlParameter p_foto = new SqlParameter("foto", entity.DevPicture);
+                    SqlParameter p_nascita = new SqlParameter("data", entity.DevBirthDate);
+                    SqlParameter p_foto = new SqlParameter("f", (object)entity.DevPicture ?? DBNull.Value);
                     SqlParameter p_costoOra = new SqlParameter("costoOra", entity.DevHourCost);
                     SqlParameter p_costoGiorno = new SqlParameter("costoGiorno", entity.DevDayCost);
                     SqlParameter p_costoMese = new SqlParameter("costoMese", entity.DevMonthCost);

@@ -41,28 +41,46 @@ namespace MVC_AdopterUnDev.Controllers
         public ActionResult Create()
         {   
             //primo modo
-            //IEnumerable<ITLang> languages = _serviceLang.Get();
+            IEnumerable<ITLang> languages = _serviceLang.Get();
             //model.langues = languages.ToArray();
 
             //il secondo ha il vantaggio che [] é di taglia fissa, non modificabile! e qui' serve questo
-            ITLang[] langues = _serviceLang.Get().ToArray();
+            //ITLang[] langues = _serviceLang.Get().ToArray();
+            //model.langues = langues;
             DeveloperCreate model = new DeveloperCreate();
-            model.langues = langues;
+            model.langues = languages;
             return View(model);
         }
 
         // POST: DeveloperController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(DeveloperCreate collection)
         {
             try
             {
+                if (!ModelState.IsValid) throw new Exception();
+                BLL_AdopteUnDev01.Models.Developer result = new BLL_AdopteUnDev01.Models.Developer()
+                { 
+                    DevName = collection.DevName,
+                    DevFirstName = collection.DevFirstName,
+                    DevBirthDate = collection.DevBirthDate,
+                    DevPicture = collection.DevPicture,
+                    DevHourCost = collection.DevHourCost,
+                    DevDayCost = collection.DevDayCost,
+                    DevMonthCost = collection.DevMonthCost,
+                    DevMail = collection.DevMail,
+                    DevCategPrincipal = collection.DevCategPrincipal
+                    //DevCategPrincipal = collection.idITlang.ToString(),
+                };
+                //insert attende un dev di type BLL che trasformerà in type DAL nel service di BLL_Adop...
+                this._service.Insert(result);
                 return RedirectToAction(nameof(Index));
             }
-            catch
+            catch(Exception e)
             {
-                return View();
+                ViewBag.Error = e.Message;
+                return View(collection);
             }
         }
 
