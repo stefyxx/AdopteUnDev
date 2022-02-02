@@ -42,22 +42,6 @@ namespace BLL_AdopteUnDev01.Handlers
                 DevCategPrincipal = dev.DevCategPrincipal
             };
         }
-        public static DAL_AdopteUnDev.DTO.Developer ToDAL1(this BLL_AdopteUnDev01.Models.Developer dev)
-        {
-            if (dev == null) return null;
-            return new DAL_AdopteUnDev.DTO.Developer
-            {
-                idDev = dev.idDev,
-                DevName = dev.DevName,
-                DevFirstName = dev.DevFirstName,
-                DevBirthDate = dev.DevBirthDate,
-                DevPicture = dev.DevPicture,
-                DevHourCost = dev.DevHourCost,
-                DevDayCost = dev.DevDayCost,
-                DevMonthCost = dev.DevMonthCost,
-                DevMail = dev.DevMail,
-                DevCategPrincipal = dev.DevCategPrincipal
-            };
-        }
+        
     }
 }

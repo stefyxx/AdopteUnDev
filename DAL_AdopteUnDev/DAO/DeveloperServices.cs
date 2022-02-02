@@ -73,12 +73,20 @@ namespace DAL_AdopteUnDev.DAO
                     SqlParameter p_nom = new SqlParameter("nom", entity.DevName);
                     SqlParameter p_pr = new SqlParameter("prenom", entity.DevFirstName);
                     SqlParameter p_nascita = new SqlParameter("data", entity.DevBirthDate);
+                    //non converte direttamente in nullo 
                     SqlParameter p_foto = new SqlParameter("f", (object)entity.DevPicture ?? DBNull.Value);
                     SqlParameter p_costoOra = new SqlParameter("costoOra", entity.DevHourCost);
                     SqlParameter p_costoGiorno = new SqlParameter("costoGiorno", entity.DevDayCost);
                     SqlParameter p_costoMese = new SqlParameter("costoMese", entity.DevMonthCost);
                     SqlParameter p_email = new SqlParameter("email", entity.DevMail);
-                    SqlParameter p_categoriaPrinc = new SqlParameter("categoriaPrinc", entity.DevCategPrincipal);
+                    SqlParameter p_categoriaPrinc = new SqlParameter("categoriaPrinc", (object)entity.DevCategPrincipal ?? DBNull.Value);
+                    /* stessa cosa di:
+                     * SqlParameter p_foto = command.Parameters.AddWithValue("@f", entity.DevPicture);
+                        if (entity.DevPicture == null)
+                        {
+                            entity.DevPicture.Value = DBNull.Value;
+                        }
+                     */
 
                     cmd.Parameters.Add(p_nom);
                     cmd.Parameters.Add(p_pr);

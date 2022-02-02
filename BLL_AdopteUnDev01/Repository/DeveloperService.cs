@@ -37,7 +37,7 @@ namespace BLL_AdopteUnDev01.Repository
 
         public void Update(int id, Developer entity)
         {
-            _repository.Update(id, entity.ToDAL1());
+            _repository.Update(id, entity.ToDAL());
         }
     }
 }
