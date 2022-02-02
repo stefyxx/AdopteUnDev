@@ -37,10 +37,11 @@ namespace MVC_AdopterUnDev.Models
         [DisplayName("E-mail : ")]
         public string DevMail { get; set; }
 
-        [DisplayName("Categoria : ")]
-        //linguaggio principe
+        [ScaffoldColumn(false)]
         public string? DevCategPrincipal { get; set; }
 
+        [DisplayName("Linguaggio principale : ")]
+        //linguaggio principe
         public string ITLabel { get; set; }
     }
 }

@@ -11,6 +11,7 @@
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
+            <!--Post é sott'inteso? .. controllare'-->
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="DevName" class="control-label"></label>
@@ -53,9 +54,24 @@
                 <span asp-validation-for="DevMail" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <!--Creare un select che ti permette di -->
+                @*<select name="selected_lang">
+            @foreach (DAL_AdopteUnDev.DTO.ITLang item in Model.langues)
+            {
+                <option value="@item.idIT">@item.ITLabel</option>
+            }
+        </select>*@
+
                 <label asp-for="DevCategPrincipal" class="control-label"></label>
-                <input asp-for="DevCategPrincipal" class="form-control" />
-                <span asp-validation-for="DevCategPrincipal" class="text-danger"></span>
+                @Html.DropDownListFor(
+                            m => m.idITlang, Model.langues.Select(o => new SelectListItem { Value = o.idIT.ToString(), Text = o.ITLabel }), "pas de choix"
+                    //m=> m.DevCategPrincipal, Model.langues.Select(o=> new SelectListItem { Value= o.ITLabel }),
+                    )
+
+                @*questo per visualizzare la sting 'DevCategPrincipal' che in realtà é il ToString() di 'idITlang' *@
+                @*<label asp-for="DevCategPrincipal" class="control-label"></label>
+        <input asp-for="DevCategPrincipal" class="form-control" />
+        <span asp-validation-for="DevCategPrincipal" class="text-danger"></span>*@
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

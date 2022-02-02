@@ -46,7 +46,15 @@ namespace MVC_AdopterUnDev.Models
         [DisplayName("E-mail : ")]
         public string DevMail { get; set; }
 
-        [DisplayName("Categoria : ")] //linguaggio principe
+        [DisplayName("Linguaggio principale : ")] //linguaggio principe
+        // é l'id int cast in toString()
         public string? DevCategPrincipal { get; set; }
+
+        //cosi' ha sia id che label
+
+        public DAL_AdopteUnDev.DTO.ITLang[] langues { get; set; }
+
+        [ScaffoldColumn(false)]
+        public int? idITlang { get; set; }
     }
 }

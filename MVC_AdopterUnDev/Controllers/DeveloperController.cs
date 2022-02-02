@@ -30,6 +30,7 @@ namespace MVC_AdopterUnDev.Controllers
         public ActionResult Details(int id)
         {
             DeveloperDetails model = _service.Get(id).ToDetailsDev();
+            //NON DIMENTICARE DI USARE 'Parse' !!!
             ITLang lang = _serviceLang.Get(Int32.Parse(model.DevCategPrincipal));
             model.ITLabel = lang.ITLabel;
             return View(model);
@@ -38,8 +39,16 @@ namespace MVC_AdopterUnDev.Controllers
         // GET: DeveloperController/Create
         [HttpGet]
         public ActionResult Create()
-        {
-            return View();
+        {   
+            //primo modo
+            //IEnumerable<ITLang> languages = _serviceLang.Get();
+            //model.langues = languages.ToArray();
+
+            //il secondo ha il vantaggio che [] é di taglia fissa, non modificabile! e qui' serve questo
+            ITLang[] langues = _serviceLang.Get().ToArray();
+            DeveloperCreate model = new DeveloperCreate();
+            model.langues = langues;
+            return View(model);
         }
 
         // POST: DeveloperController/Create

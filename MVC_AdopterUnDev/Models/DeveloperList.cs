@@ -19,6 +19,7 @@ namespace MVC_AdopterUnDev.Models
         public double DevDayCost { get; set; }
         public double DevMonthCost { get; set; }
         //public string DevMail { get; set; }
+
         //linguaggio principe
         public string? DevCategPrincipal { get; set; }
     }
