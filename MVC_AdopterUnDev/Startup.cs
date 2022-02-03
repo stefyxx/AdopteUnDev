@@ -28,8 +28,12 @@ namespace MVC_AdopterUnDev
 
             services.AddScoped<IDeveloperRepository<DAL_AdopteUnDev.DTO.Developer>, DAL_AdopteUnDev.DAO.DeveloperServices>();
             services.AddScoped<IDeveloperRepository<BLL_AdopteUnDev01.Models.Developer>, BLL_AdopteUnDev01.Repository.DeveloperService>();
+
             services.AddScoped<IDeveloperRepository<DAL_AdopteUnDev.DTO.ITLang>, DAL_AdopteUnDev.DAO.ITLangServices>();
-            
+
+            services.AddScoped<IDeveloperRepository<DAL_AdopteUnDev.DTO.Client>, DAL_AdopteUnDev.DAO.ClientServices>();
+            services.AddScoped<IDeveloperRepository<BLL_AdopteUnDev01.Models.Client>, BLL_AdopteUnDev01.Repository.ClientService>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
