@@ -17,17 +17,18 @@ namespace MVC_AdopterUnDev.Controllers
         {
             _logger = logger;
         }
-
+        //questo posso cancellarlo: controllare _layout i link et STARTUP
         public IActionResult Index()
         {
             return View();
         }
-
+        //questo posso cancellarlo: controllare _layout i link et STARTUP
         public IActionResult Privacy()
         {
             return View();
         }
-
+        //importante di tenerlo perché generà la pagina di 'Error'
+        //altrimenti devo pevedere un Controlle che fa questo e ricreare le route e la view
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
