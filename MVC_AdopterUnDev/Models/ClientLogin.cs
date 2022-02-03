@@ -11,6 +11,7 @@ namespace MVC_AdopterUnDev.Models
         [Key]
         [ScaffoldColumn(false)]
         public int idClient { get; set; }
+
         [Required]
         [DisplayName("Cognome : ")]
         //[StringLength(100, MinimumLength = 2)]
@@ -25,7 +26,7 @@ namespace MVC_AdopterUnDev.Models
         public string CliFirstName { get; set; }
 
         [Required(ErrorMessage = "L'indirizzo e-mail é obbligatorio ")]
-        [EmailAddress(ErrorMessage = "Inserire un'e-mail valida! )")]
+        //[EmailAddress(ErrorMessage = "Inserire un'e-mail valida! )")]
         [DisplayName("E-mail : ")]
         [StringLength(maximumLength: 250, MinimumLength = 2)]
         [DataType(DataType.EmailAddress)]
@@ -40,7 +41,7 @@ namespace MVC_AdopterUnDev.Models
 
         //sono string e possono essere tranquillamente NULL ( x Number devo prendere 0)
         
-        [DisplayName("Login : ")]
+        [DisplayName("Il vostro Login : ")]
         [StringLength(maximumLength: 100, MinimumLength = 2)]
         // lo autoriempio: CliCompany.CliName
         public string? CliLogin { 
@@ -56,6 +57,10 @@ namespace MVC_AdopterUnDev.Models
         [Required]
         [DisplayName("Password : ")]
         [DataType(DataType.Password)]
+        [RegularExpression(@"^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&-+=()])(?=\S+$).{8,20}$", ErrorMessage = "Le mot de passe doit au minimum un nombre, une minuscule, une majuscule, un caractère parmis '@#$%^&-+=()', aucun espace blanc, compris entre 8 et 20 caractères.")]
         public string? CliPassword { get; set; }
+
+        [Required]
+        public bool Validate { get; set; }
     }
 }

@@ -1,20 +1,48 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using AdopteUnDev_Common.IRepositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MVC_AdopterUnDev.Models;
 
 namespace MVC_AdopterUnDev.Controllers
 {
     public class ClientController : Controller
     {
-        
+        private readonly IDeveloperRepository<BLL_AdopteUnDev01.Models.Client> _serviceCl;
+        public ClientController(IDeveloperRepository<BLL_AdopteUnDev01.Models.Client> serviceCl)
+        {
+            this._serviceCl = serviceCl;
+        }
+
+
         // GET: ClientController
         // cadi sulla pag dove hai o login o registrati
         public ActionResult Index()
         {
             return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Index(ClientLogin collection)
+        {
+
+            try
+            {
+                //if (result is null) throw new Exception("Nessun developer con questo identificante");
+                if (!ModelState.IsValid) throw new Exception();
+                if (!collection.Validate) throw new Exception("Bisogna validare la cancellazione!");
+
+                return RedirectToAction(nameof(Index),"Developer");
+
+            }
+            catch (Exception)
+            {
+
+                return RedirectToAction(nameof(Index));
+            }
         }
 
         // GET: ClientController/Details/5

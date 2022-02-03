@@ -70,7 +70,7 @@ namespace DAL_AdopteUnDev.DAO
             {
                 using (SqlCommand cmd = c.CreateCommand())
                 {
-                    cmd.CommandText = "INSERT INTO [Client]([idClient],[CliName],[CliFirstName],[CliMail],[CliCompany],[CliLogin],[CliPassword]) OUTPUT [inserted].[idClient] VALUES (( SELECT MAX(idClient) FROM [Client])+1, @nom, @prenom, @email,@company,@login,@psw)";
+                    cmd.CommandText = "INSERT INTO [Client]([idClient],[CliName],[CliFirstName],[CliMail],[CliCompany],[CliLogin],[CliPassword]) OUTPUT [inserted].[idClient] VALUES((COALESCE((SELECT MAX(idClient) FROM [Client]),0)+1), @nom, @prenom, @email,@company,@login,@psw)";
                     SqlParameter p_nom = new SqlParameter("nom", entity.CliName);
                     SqlParameter p_pr = new SqlParameter("prenom", entity.CliFirstName);
                     SqlParameter p_email = new SqlParameter("email", entity.CliMail);
