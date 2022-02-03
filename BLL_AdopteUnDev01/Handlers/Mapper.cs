@@ -16,6 +16,7 @@ namespace BLL_AdopteUnDev01.Handlers
                 DevFirstName = dev.DevFirstName,
                 DevBirthDate = dev.DevBirthDate,
                 DevPicture = dev.DevPicture,
+                //una string puo' essere NULL tranquilmente
                 //DevPicture = (dev.DevPicture is null)?null:(string)dev.DevPicture,
                 DevHourCost = dev.DevHourCost,
                 DevDayCost = dev.DevDayCost,
@@ -42,6 +43,38 @@ namespace BLL_AdopteUnDev01.Handlers
                 DevCategPrincipal = dev.DevCategPrincipal
             };
         }
-        
+
+        public static BLL_AdopteUnDev01.Models.Client ToBLL(this DAL_AdopteUnDev.DTO.Client client)
+        {
+            if (client == null) return null;
+            return new Models.Client
+            {
+                idClient = client.idClient,
+                CliName = client.CliName,
+                CliFirstName = client.CliFirstName,
+                CliMail = client.CliMail,
+                CliCompany = client.CliCompany,
+                //una string puo' essere NULL tranquilmente
+                //CliLogin = (client.CliLogin is null)?null:(string)client.CliLogin,
+                CliLogin = client.CliLogin,
+                CliPassword = client.CliPassword
+            };
+        }
+
+        public static DAL_AdopteUnDev.DTO.Client ToDAL(this BLL_AdopteUnDev01.Models.Client client)
+        {
+            if (client == null) return null;
+            return new DAL_AdopteUnDev.DTO.Client
+            {
+                idClient = client.idClient,
+                CliName = client.CliName,
+                CliFirstName = client.CliFirstName,
+                CliMail = client.CliMail,
+                CliCompany = client.CliCompany,
+                CliLogin = client.CliLogin,
+                CliPassword = client.CliPassword
+
+            };
+        }
     }
 }

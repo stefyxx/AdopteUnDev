@@ -9,7 +9,9 @@ namespace MVC_AdopterUnDev.Controllers
 {
     public class ClientController : Controller
     {
+        
         // GET: ClientController
+        // cadi sulla pag dove hai o login o registrati
         public ActionResult Index()
         {
             return View();
@@ -64,6 +66,7 @@ namespace MVC_AdopterUnDev.Controllers
         }
 
         // GET: ClientController/Delete/5
+        //NON dimenticare che non cancella i clienti; ma loro 'login' e 'psw' !!
         public ActionResult Delete(int id)
         {
             return View();

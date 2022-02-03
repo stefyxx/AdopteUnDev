@@ -18,8 +18,8 @@ namespace DAL_AdopteUnDev.Handlers
                 CliFirstName=(string)record[nameof(Client.CliFirstName)],
                 CliMail=(string)record[nameof(Client.CliMail)],
                 CliCompany=(string)record[nameof(Client.CliCompany)],
+                //CliLogin =(string)record[nameof(Client.CliLogin)],
                 CliLogin = (record[nameof(Client.CliLogin)]==DBNull.Value)?null:(string)record[nameof(Client.CliLogin)]
-                //CliLogin =(string)record[nameof(Client.CliLogin)]
 
             };
         }

@@ -6,10 +6,10 @@ using System.Linq;
 
 namespace BLL_AdopteUnDev01.Repository
 {
-    public class DeveloperService : IDeveloperRepository<BLL_AdopteUnDev01.Models.Developer>
+    public class ClientService : IDeveloperRepository<BLL_AdopteUnDev01.Models.Client>
     {
-        private readonly IDeveloperRepository<DAL_AdopteUnDev.DTO.Developer> _repository;
-        public DeveloperService(IDeveloperRepository<DAL_AdopteUnDev.DTO.Developer> repository)
+        private readonly IDeveloperRepository<DAL_AdopteUnDev.DTO.Client> _repository;
+        public ClientService(IDeveloperRepository<DAL_AdopteUnDev.DTO.Client> repository)
         {
             _repository = repository;
         }
@@ -18,22 +18,22 @@ namespace BLL_AdopteUnDev01.Repository
             _repository.Delete(id);
         }
 
-        public Developer Get(int id)
+        public Client Get(int id)
         {
             return _repository.Get(id).ToBLL();
         }
 
-        public IEnumerable<Developer> Get()
+        public IEnumerable<Client> Get()
         {
             return _repository.Get().Select(d => d.ToBLL());
         }
 
-        public int Insert(Developer entity)
+        public int Insert(Client entity)
         {
             return _repository.Insert(entity.ToDAL());
         }
 
-        public void Update(int id, Developer entity)
+        public void Update(int id, Client entity)
         {
             _repository.Update(id, entity.ToDAL());
         }

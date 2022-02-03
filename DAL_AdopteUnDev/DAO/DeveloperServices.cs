@@ -16,6 +16,8 @@ namespace DAL_AdopteUnDev.DAO
             {
                 using (SqlCommand cmd = c.CreateCommand())
                 {
+                    //potrebbe essere piu' corretto; aah!! bisogna dotarli di login!!:
+                    //cmd.CommandText = "UPDATE [Developer] SET login=Nll, psw=null WHERE [idDev]=@id ";
                     cmd.CommandText = "DELETE FROM [Developer] WHERE [idDev] = @id";
                     SqlParameter p_id = new SqlParameter("id", id);
                     cmd.Parameters.Add(p_id);
