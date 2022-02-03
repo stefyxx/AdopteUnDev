@@ -60,7 +60,19 @@ namespace MVC_AdopterUnDev.Handlers
                 //idITlang = Int32.Parse(dev.DevCategPrincipal),
             };
         }
-        
+
+        public static DeveloperDelete ToDeleteDev(this BLL_AdopteUnDev01.Models.Developer dev)
+        {
+            if (dev is null) return null;
+            return new DeveloperDelete
+            {
+                idDev= dev.idDev,
+                DevName=dev.DevName,
+                DevFirstName=dev.DevFirstName,
+                DevMail=dev.DevMail,
+                Validate = false
+            };
+        }
         
     }
 }
