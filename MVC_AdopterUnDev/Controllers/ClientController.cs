@@ -17,16 +17,14 @@ namespace MVC_AdopterUnDev.Controllers
             this._serviceCl = serviceCl;
         }
 
-
-        // GET: ClientController
-        // cadi sulla pag dove hai o login o registrati
+        // cadi sulla pag dove hai o login o registrati: vista parziale di action Login
         public ActionResult Index()
         {
             return View();
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Index(ClientLogin collection)
+        public ActionResult Index(ClientIndex collection)
         {
 
             try
@@ -35,7 +33,7 @@ namespace MVC_AdopterUnDev.Controllers
                 if (!ModelState.IsValid) throw new Exception();
                 if (!collection.Validate) throw new Exception("Bisogna validare la cancellazione!");
 
-                return RedirectToAction(nameof(Index),"Developer");
+                return RedirectToAction(nameof(Index), "Developer");
 
             }
             catch (Exception)
@@ -44,6 +42,31 @@ namespace MVC_AdopterUnDev.Controllers
                 return RedirectToAction(nameof(Index));
             }
         }
+
+        public ActionResult Login()
+        {
+            return View();
+
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Login(ClientLogin collection)
+        {
+            try
+            {
+                return RedirectToAction("Index", "Developer");
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+
+
+
 
         // GET: ClientController/Details/5
         public ActionResult Details(int id)

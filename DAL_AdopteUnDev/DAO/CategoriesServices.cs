@@ -69,6 +69,7 @@ namespace DAL_AdopteUnDev.DAO
             {
                 using (SqlCommand cmd = c.CreateCommand())
                 {
+                    //cmd.CommandText = "INSERT INTO [Categories]([idCategory],[CategLabel]) VALUES (@categoria)";(COALESCE((SELECT MAX(idClient) FROM[Client]), 0) + 1),@categoria)"; // lascio OUTPUT perché deve return un 'int'
                     cmd.CommandText = "INSERT INTO [Categories]([CategLabel]) OUTPUT [inserted].[idCategory] VALUES (@categoria)";
                     SqlParameter p_categoria = new SqlParameter("categoria", entity.CategLabel);
 

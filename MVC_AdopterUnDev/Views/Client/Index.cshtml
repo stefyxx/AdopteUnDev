@@ -1,100 +1,77 @@
-﻿@model MVC_AdopterUnDev.Models.ClientLogin
+﻿@model MVC_AdopterUnDev.Models.ClientIndex
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
-
-<h4>ClientLogin</h4>
+<h4>Client</h4>
 <hr />
 <section>
     <div class="container">
-
         <div class="row">
             <div class="col-sm-4 col-sm-offset-1">
-                <form class="signup-form" asp-action="Index">
+                <form asp-action="Index" class="signup-form">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
                     <!--sign up form-->
                     <h2>New User Signup!</h2>
+
                     <div class="form-group">
                         <label asp-for="CliName" class="control-label"></label>
-                        <input asp-for="CliName" class="form-control" placeholder="Name" />
+                        <input asp-for="CliName" class="form-control" />
                         <span asp-validation-for="CliName" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="CliFirstName" class="control-label"></label>
-                        <input asp-for="CliFirstName" class="form-control" placeholder="First Name" />
+                        <input asp-for="CliFirstName" class="form-control" />
                         <span asp-validation-for="CliFirstName" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="CliMail" class="control-label"></label>
-                        <input asp-for="CliMail" class="form-control" placeholder="e-mail" />
+                        <input asp-for="CliMail" class="form-control" />
                         <span asp-validation-for="CliMail" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="CliCompany" class="control-label"></label>
-                        <input asp-for="CliCompany" class="form-control" placeholder="Company" />
+                        <input asp-for="CliCompany" class="form-control" />
                         <span asp-validation-for="CliCompany" class="text-danger"></span>
                     </div>
-
-
-                    @*<div class="form-group">
-                            <label asp-for="CliLogin" class="control-label"></label>
-                            <p>@Model.CliLogin</p>
-                            <!--<input asp-for="CliLogin" class="form-control" />-->
-                            <!--<span asp-validation-for="CliLogin" class="text-danger"></span>-->
-                        </div>*@
-
                     <div class="form-group">
                         <label asp-for="CliPassword" class="control-label"></label>
                         <input asp-for="CliPassword" class="form-control" />
                         <span asp-validation-for="CliPassword" class="text-danger"></span>
                     </div>
+                    @*identico a
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Validate)
+                    @Html.CheckBoxFor(m => m.Validate)
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div> *@
                     <div class="form-group">
-                        @Html.LabelFor(m => m.Validate)
-                        @Html.CheckBoxFor(m => m.Validate)
+                        <div class="form-group form-check">
+                            <label class="form-check-label">
+                                <input class="form-check-input" asp-for="Validate" />@Html.DisplayNameFor(model => model.Validate)
+                            </label>
+                        </div>
                         <input type="submit" value="Create" class="btn btn-primary" />
                     </div>
                 </form>
+                <!--/sign up form-->
             </div>
-            <!--/sign up form-->
-            <div class="col-sm-1">
-                <h2 class="or">OR</h2>
-            </div>
-            <div class="col-sm-4">
-                <div class="login-form">
-                    <!--login form-->
-                    <h2>Login to your account</h2>
-                    <form class="signup-form" asp-action="Index">
-                        <div class="form-group">
-                            <label asp-for="CliLogin" class="control-label"></label>
-                            <input asp-for="CliLogin" class="form-control" />
-                            <span asp-validation-for="CliLogin" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="CliPassword" class="control-label"></label>
-                            <input asp-for="CliPassword" class="form-control" />
-                            <span asp-validation-for="CliPassword" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            @Html.LabelFor(m => m.Validate)
-                            @Html.CheckBoxFor(m => m.Validate)
-                            <input type="submit" value="Login" class="btn btn-primary" />
-                        </div>
-                    </form>
-                    <!--/login form-->
-                </div>
-            </div>
+
+            <!--login form-->
+            @*identico a :    @Html.Partial("_login", Model.loggato);   *@
+
+            @{
+                Html.RenderPartial("_login", Model.loggato);
+            }
+            <!--/login form-->
         </div>
     </div>
-
 </section>
 
-
-<br />
 <div>
-    @Html.ActionLink("Back to HomePage", "Index", "Developer")
+    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {
