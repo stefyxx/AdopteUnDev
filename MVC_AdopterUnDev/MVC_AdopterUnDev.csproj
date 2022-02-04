@@ -14,4 +14,8 @@
     <ProjectReference Include="..\DAL_AdopteUnDev\DAL_AdopteUnDev.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\assets\" />
+  </ItemGroup>
+
 </Project>

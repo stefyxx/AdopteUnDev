@@ -15,7 +15,7 @@ namespace MVC_AdopterUnDev.Models
         //login lo dono io, non lo deve modificare
         [DisplayName("Login : ")]
         [StringLength(maximumLength: 100, MinimumLength = 2)]
-        public string? CliLogin { get; }
+        public string? CliLogin { get; set; }
 
         [Required]
         [DisplayName("Password : ")]

@@ -42,11 +42,11 @@
                         <span asp-validation-for="CliPassword" class="text-danger"></span>
                     </div>
                     @*identico a
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Validate)
-                    @Html.CheckBoxFor(m => m.Validate)
-                    <input type="submit" value="Create" class="btn btn-primary" />
-                </div> *@
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Validate)
+                            @Html.CheckBoxFor(m => m.Validate)
+                            <input type="submit" value="Create" class="btn btn-primary" />
+                        </div> *@
                     <div class="form-group">
                         <div class="form-group form-check">
                             <label class="form-check-label">
@@ -60,18 +60,19 @@
             </div>
 
             <!--login form-->
-            @*identico a :    @Html.Partial("_login", Model.loggato);   *@
+            @*@Html.Partial("_login", Model.loggato);
 
-            @{
-                Html.RenderPartial("_login", Model.loggato);
-            }
+                    identico a :    @{
+                    Html.RenderPartial("login", Model.loggato);
+                }   *@
             <!--/login form-->
         </div>
     </div>
 </section>
 
+<br />
 <div>
-    <a asp-action="Index">Back to List</a>
+    @Html.ActionLink("Back to HomePage", "Index", "Developer")
 </div>
 
 @section Scripts {

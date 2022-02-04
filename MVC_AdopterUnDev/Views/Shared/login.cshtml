@@ -1,0 +1,33 @@
+﻿@model MVC_AdopterUnDev.Models.ClientLogin
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="col-sm-1">
+    <h2 class="or">OR</h2>
+</div>
+<div class="col-sm-4">
+    <div class="login-form">
+        <!--login form-->
+        <h2>Login to your account</h2>
+        <form class="signup-form" asp-action="Index">
+            <div class="form-group">
+                <label asp-for="CliLogin" class="control-label"></label>
+                <input asp-for="CliLogin" class="form-control" />
+                <span asp-validation-for="CliLogin" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CliPassword" class="control-label"></label>
+                <input asp-for="CliPassword" class="form-control" />
+                <span asp-validation-for="CliPassword" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Validate)
+                @Html.CheckBoxFor(m => m.Validate)
+                <input type="submit" value="Login" class="btn btn-primary" />
+            </div>
+        </form>
+        <!--/login form-->
+    </div>
+</div>

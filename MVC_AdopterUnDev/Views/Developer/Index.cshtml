@@ -9,7 +9,7 @@
 <p>
     <a asp-action="Create"> Create New </a>
 </p>
-<table class="table">
+<table class="table" width="70%">
     <thead>
         <tr>
             <th>
@@ -46,7 +46,15 @@
                 @Html.DisplayFor(modelItem => item.DevFirstName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.DevPicture)
+                @if (item.DevPicture is null)
+                {
+                <img width="250" src="~/assets/null.jpg"/>
+                }
+                else
+                {
+                    <img width="150" src="~/assets/@Html.DisplayFor(modelItem => item.DevPicture)" alt=" A V A T A R " />
+                //ho inserito alt x i not found no buono: 'item.DevPicture is NotFoundResult'
+                }
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.DevHourCost)

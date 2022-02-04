@@ -9,10 +9,10 @@ using MVC_AdopterUnDev.Models;
 
 namespace MVC_AdopterUnDev.Controllers
 {
-    public class ClientController : Controller
+    public class Client01Controller : Controller
     {
         private readonly IDeveloperRepository<BLL_AdopteUnDev01.Models.Client> _serviceCl;
-        public ClientController(IDeveloperRepository<BLL_AdopteUnDev01.Models.Client> serviceCl)
+        public Client01Controller(IDeveloperRepository<BLL_AdopteUnDev01.Models.Client> serviceCl)
         {
             this._serviceCl = serviceCl;
         }
