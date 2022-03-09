@@ -21,6 +21,7 @@ namespace MVC_AdopterUnDev.Controllers
         public ActionResult Index()
         {
             return View();
+            //return PartialView(); //ritorna solo view 'index.cshtml' SENZA _layout
         }
         [HttpPost]
         [ValidateAntiForgeryToken]

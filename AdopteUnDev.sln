@@ -19,7 +19,7 @@ Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "DBAdopteUnDev", "DBAdopteUn
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "tests", "tests\tests.csproj", "{63C017BE-67EC-49F4-8421-0DEDB0D2442D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLL_AdopteUnDev01", "BLL_AdopteUnDev01\BLL_AdopteUnDev01.csproj", "{3B5F4762-E032-4EC5-9FAE-9CE0D919E1CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BLL_AdopteUnDev01", "BLL_AdopteUnDev01\BLL_AdopteUnDev01.csproj", "{3B5F4762-E032-4EC5-9FAE-9CE0D919E1CE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
